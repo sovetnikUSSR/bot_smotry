@@ -1,0 +1,4 @@
+﻿aiogram
+apscheduler
+pytz
+aiohttp
