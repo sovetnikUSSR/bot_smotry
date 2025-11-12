@@ -14,6 +14,7 @@ from aiogram.types import Message, ReplyKeyboardRemove
 from aiogram.utils.keyboard import ReplyKeyboardBuilder
 from aiogram.fsm.context import FSMContext
 from aiogram.fsm.state import State, StatesGroup
+from aiogram.client.default import DefaultBotProperties # <-- Новый импорт
 import os  # <-- Импортируем os для переменных окружения
 
 # ========================
@@ -65,7 +66,8 @@ users = {}  # {user_id: {start_hour, end_hour, used_quotes_today, last_action_da
 # ИНИЦИАЛИЗАЦИЯ
 # ========================
 session = AiohttpSession()
-bot = Bot(token=BOT_TOKEN, session=session, parse_mode=ParseMode.HTML)
+# Обновлённая инициализация бота с DefaultBotProperties
+bot = Bot(token=BOT_TOKEN, session=session, default=DefaultBotProperties(parse_mode=ParseMode.HTML))
 dp = Dispatcher()
 scheduler = AsyncIOScheduler(timezone="Europe/Moscow")
 
